@@ -1,0 +1,2719 @@
+- name: Dash
+  automation:
+    - type: text
+      text: >-
+        When you take the Dash action, you gain extra movement for the current
+        turn. The increase equals your speed, after applying any modifiers. With
+        a speed of 30 feet, for example, you can move up to 60 feet on your turn
+        if you dash.
+
+
+        Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash
+      title: Effect
+  _v: 2
+  proper: true
+  verb: decides to
+  activation_type: 1
+- name: Disengage
+  automation:
+    - type: text
+      text: If you take the Disengage action, your movement doesn’t provoke
+        opportunity attacks for the rest of the turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: decides to
+  activation_type: 1
+- name: Dodge
+  automation:
+    - type: text
+      text: When you take the Dodge action, you focus entirely on avoiding attacks.
+        Until the start of your next turn, any attack roll made against you has
+        disadvantage if you can see the attacker, and you make Dexterity saving
+        throws with advantage. You lose this benefit if you are incapacitated or
+        if your speed drops to 0.
+      title: Effect
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Dodging
+          duration: "1"
+          effects:
+            attack_advantage: null
+            to_hit_bonus: null
+            damage_bonus: null
+            magical_damage: null
+            silvered_damage: null
+            resistances: null
+            immunities: null
+            vulnerabilities: null
+            ignored_resistances: null
+            ac_value: null
+            ac_bonus: null
+            max_hp_value: null
+            max_hp_bonus: null
+            save_bonus: null
+            save_adv:
+              - dex
+            save_dis: null
+            check_bonus: null
+            check_adv: null
+            check_dis: null
+            dc_bonus: null
+          attacks: []
+          buttons: []
+          end: false
+          conc: false
+          desc: >-
+            Until the start of your next turn:
+             - Any attack roll made against you has disadvantage if you can see the attacker.
+             - You make Dexterity saving throws with advantage.
+            You lose this benefit if you are incapacitated or if your speed drops to 0.
+          stacking: false
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+  _v: 2
+  proper: true
+  verb: decides to
+  activation_type: 1
+- name: Help
+  automation:
+    - type: text
+      text: >-
+        You can lend your aid to another creature in the completion of a task.
+        When you take the Help action, the creature you aid gains advantage on
+        the next ability check it makes to perform the task you are helping
+        with, provided that it makes the check before the start of your next
+        turn.
+
+
+        Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally’s attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage.
+      title: Effect
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Helping
+          duration: "1"
+          effects: null
+          attacks: []
+          buttons: []
+          end: false
+          conc: false
+          desc: You lend your aid to another creature in the completion of a task.
+          stacking: false
+          save_as: Helping
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: target
+      target: all
+      effects:
+        - type: ieffect2
+          name: Being Helped
+          duration: null
+          effects: null
+          attacks: []
+          buttons: []
+          end: false
+          conc: false
+          desc: >-
+            You gain advantage on the next ability check you make to perform the task
+            you are being helped with, provided that you makes the check before
+            the start of your helper's next turn.
+
+            Alternatively, if you attack the target your ally is distracting before their next turn, the first attack roll is made with advantage.
+          stacking: false
+          save_as: null
+          parent: Helping
+          target_self: null
+          tick_on_caster: null
+  _v: 2
+  proper: true
+  verb: tries to
+  activation_type: 1
+- name: Hide
+  automation:
+    - type: text
+      text: When you take the Hide action, you make a Dexterity (Stealth) check in an
+        attempt to hide, following the rules for hiding.
+      title: Effect
+    - type: target
+      target: self
+      effects:
+        - type: check
+          ability: stealth
+  _v: 2
+  proper: true
+  verb: tries to
+  activation_type: 1
+- name: Search (Perception)
+  automation:
+    - type: text
+      text: When you take the Search action, you devote your attention to finding
+        something. Depending on the nature of your search, the DM might have you
+        make a Wisdom (Perception) check or an Intelligence (Investigation)
+        check.
+      title: Effect
+    - type: target
+      target: self
+      effects:
+        - type: check
+          ability: perception
+  _v: 2
+  proper: true
+  verb: tries to
+  activation_type: 1
+- name: Search (Investigation)
+  automation:
+    - type: text
+      text: When you take the Search action, you devote your attention to finding
+        something. Depending on the nature of your search, the DM might have you
+        make a Wisdom (Perception) check or an Intelligence (Investigation)
+        check.
+      title: Effect
+    - type: target
+      target: self
+      effects:
+        - type: check
+          ability: investigation
+  _v: 2
+  proper: true
+  verb: tries to
+  activation_type: 1
+- name: Ready
+  automation:
+    - type: text
+      text: >-
+        You take the Ready action on your turn, which lets you act using your
+        reaction before the start of your next turn.
+
+
+        First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it.
+
+
+        When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger.
+
+
+        When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell’s magic requires concentration. If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: gets
+  activation_type: 1
+- name: Use An Object
+  automation:
+    - type: text
+      text: You normally interact with an object while doing something else, such as
+        when you draw a sword as part of an attack. When an object requires your
+        action for its use, you take the Use an Object action. This action is
+        also useful when you want to interact with more than one object on your
+        turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: decides to
+  activation_type: 1
+- name: Grapple
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: check
+          ability:
+            - acrobatics
+            - athletics
+          contestAbility:
+            - athletics
+          fail:
+            - type: ieffect2
+              name: Grappled
+              duration: null
+              effects: null
+              attacks: []
+              buttons:
+                - label: Escape Grapple
+                  automation:
+                    - type: target
+                      target: children
+                      effects:
+                        - type: check
+                          ability:
+                            - athletics
+                          contestAbility:
+                            - acrobatics
+                            - athletics
+                          fail:
+                            - type: remove_ieffect
+                          contestTie: fail
+                  verb: attempts to break out of the grapple
+                  style: "3"
+                  defaultDC: null
+                  defaultAttackBonus: null
+                  defaultCastingMod: null
+              end: false
+              conc: false
+              desc: Grappled by {{caster.name}}
+              stacking: false
+              save_as: grapple
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          contestTie: neither
+    - type: condition
+      condition: not lastCheckDidPass
+      onTrue:
+        - type: target
+          target: self
+          effects:
+            - type: ieffect2
+              name: Grappling
+              duration: null
+              effects: null
+              attacks: []
+              buttons:
+                - label: Release Grapple
+                  automation:
+                    - type: remove_ieffect
+                      removeParent: always
+                  verb: lets go of their target
+                  style: "1"
+                  defaultDC: null
+                  defaultAttackBonus: null
+                  defaultCastingMod: null
+              end: false
+              conc: false
+              desc: Grappling {{targets[0].name if str(targets[0])!=targets[0] else
+                targets[0]}}
+              stacking: false
+              save_as: null
+              parent: grapple
+              target_self: null
+              tick_on_caster: null
+      onFalse: []
+      errorBehaviour: "false"
+    - type: text
+      text: >-
+        When you want to grab a creature or wrestle with it, you can use the
+        Attack action to make a special melee attack, a grapple. If you’re able
+        to make multiple attacks with the Attack action, this attack replaces
+        one of them.
+
+
+        The target of your grapple must be no more than one size larger than you and must be within your reach. Using at least one free hand, you try to seize the target by making a grapple check instead of an attack roll: a Strength (Athletics) check contested by the target’s Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). You succeed automatically if the target is incapacitated. If you succeed, you subject the target to the grappled condition. The condition specifies the things that end it, and you can release the target whenever you like (no action required).
+      title: Effect
+  _v: 2
+  proper: true
+  verb: tries to
+- name: Shove (Prone)
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: check
+          ability:
+            - acrobatics
+            - athletics
+          contestAbility:
+            - athletics
+          fail:
+            - type: ieffect2
+              name: Prone
+              duration: null
+              effects:
+                attack_advantage: "-1"
+                to_hit_bonus: null
+                damage_bonus: null
+                magical_damage: null
+                silvered_damage: null
+                resistances: null
+                immunities: null
+                vulnerabilities: null
+                ignored_resistances: null
+                ac_value: null
+                ac_bonus: null
+                max_hp_value: null
+                max_hp_bonus: null
+                save_bonus: null
+                save_adv: null
+                save_dis: null
+                check_bonus: null
+                check_adv: null
+                check_dis: null
+                dc_bonus: null
+              attacks: []
+              buttons:
+                - label: Stand Up
+                  automation:
+                    - type: remove_ieffect
+                  verb: stands up
+                  style: "3"
+                  defaultDC: null
+                  defaultAttackBonus: null
+                  defaultCastingMod: null
+              end: false
+              conc: false
+              desc: A prone creature's only movement option is to crawl, unless it stands up
+                and thereby ends the condition.
+              stacking: false
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          contestTie: neither
+    - type: text
+      text: >-
+        Using the Attack action, you can make a special melee attack to shove a
+        creature, either to knock it prone or push it away from you. If you’re
+        able to make multiple attacks with the Attack action, this attack
+        replaces one of them.
+
+
+        The target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target’s Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). You succeed automatically if the target is incapacitated. If you succeed, you either knock the target prone or push it 5 feet away from you.
+      title: Effect
+  _v: 2
+- name: Shove (Away)
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: check
+          ability:
+            - acrobatics
+            - athletics
+          contestAbility:
+            - athletics
+          contestTie: neither
+    - type: text
+      text: >-
+        Using the Attack action, you can make a special melee attack to shove a
+        creature, either to knock it prone or push it away from you. If you’re
+        able to make multiple attacks with the Attack action, this attack
+        replaces one of them.
+
+
+        The target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target’s Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). You succeed automatically if the target is incapacitated. If you succeed, you either knock the target prone or push it 5 feet away from you.
+      title: Effect
+  _v: 2
+- name: Sun Blade
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d8[slashing] + {{strengthMod or dexterityMod}}
+              overheal: null
+            - type: condition
+              condition: target.creature_type and ('undead' in target.creature_type.lower())
+              onTrue:
+                - type: damage
+                  damage: 1d8[radiant]
+                  overheal: null
+              onFalse: []
+              errorBehaviour: "false"
+          miss: []
+          attackBonus: "{{(strengthMod or dexterityMod) + proficiencyBonus + 2}}"
+        - type: text
+          text: >-
+            This item appears to be a longsword hilt. While grasping the hilt, you can
+            use a bonus action to cause a blade of pure radiance to spring into
+            existence, or make the blade disappear. While the blade exists, this
+            magic longsword has the finesse property. If you are proficient with
+            shortswords or longswords, you are proficient with the sun blade.
+
+
+            You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra 1d8 radiant damage.
+
+
+            The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each.
+          title: Description
+  _v: 2
+  thumb: https://images-ext-1.discordapp.net/external/Bdz2E3khP7YwDgrZOlb4STFzQeO8GNDQzi2hEqFqxJI/https/www.dndbeyond.com/avatars/thumbnails/45205/874/315/315/638657414143894914.jpeg?format=webp
+- name: Cloud Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d4 [thunder]
+          overheal: false
+        - type: save
+          stat: wis
+          fail:
+            - type: ieffect2
+              name: Reverse Invisible
+              duration: "1"
+              effects:
+                attack_advantage: "-1"
+                to_hit_bonus: null
+                damage_bonus: null
+                magical_damage: null
+                silvered_damage: null
+                resistances: null
+                immunities: null
+                vulnerabilities: null
+                ignored_resistances: null
+                ac_value: null
+                ac_bonus: null
+                max_hp_value: null
+                max_hp_bonus: null
+                save_bonus: null
+                save_adv: null
+                save_dis: null
+                check_bonus: null
+                check_adv: null
+                check_dis: null
+                dc_bonus: null
+              attacks: []
+              buttons: []
+              end: false
+              conc: false
+              desc: The creature cannot see its attacker due to them being invisible to them.
+                The invisibility ends at the next start of attacker's turn, or
+                if they attack or cast a spell.
+              stacking: false
+              save_as: null
+              parent: null
+              target_self: false
+              tick_on_caster: true
+          success: []
+        - type: counter
+          counter:
+            id: 1405423
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: false
+          errorBehaviour: warn
+        - type: text
+          text: The target takes an extra 1d4 thunder damage. If the target is a creature,
+            it must succeed on a Wisdom saving throw, or you become invisible to
+            it until the start of your next turn or until immediately after you
+            make an attack roll or cast a spell.
+          title: Cloud Strike
+  _v: 2
+  activation_type: 8
+- name: Frost Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d6[cold]
+          overheal: null
+        - type: save
+          stat: con
+          fail:
+            - type: ieffect2
+              name: Reduced Speed
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: Speed reduced to 0.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: true
+          success: []
+        - type: text
+          text: The target takes an extra 1d6 cold damage. If the target is a creature, it
+            must succeed on a Constitution saving throw, or its speed is reduced
+            to 0 until the start of your next turn.
+          title: Frost Strike
+        - type: counter
+          counter:
+            id: 1405425
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  activation_type: 8
+- name: Hill Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d6[weapon]
+          overheal: null
+        - type: save
+          stat: str
+          fail:
+            - type: ieffect2
+              name: Prone
+              duration: null
+              effects: null
+              attacks: []
+              buttons:
+                - label: Stand Up
+                  automation:
+                    - type: remove_ieffect
+                  verb: null
+                  style: "1"
+                  defaultDC: null
+                  defaultAttackBonus: null
+                  defaultCastingMod: null
+              end: null
+              conc: null
+              desc: null
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success: []
+        - type: text
+          text: The target takes an extra 1d6 damage of the weapon's type. If the target
+            is a creature, it must succeed on a Strength saving throw or have
+            the prone condition.
+          title: Hill Strike
+        - type: counter
+          counter:
+            id: 1405426
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  activation_type: 8
+- name: Stone Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d6[force]
+          overheal: null
+        - type: save
+          stat: str
+          fail:
+            - type: text
+              text: "# Pushed 10 feet back!!"
+              title: Effect
+          success: []
+        - type: text
+          text: The target takes an extra 1d6 force damage. If the target is a creature,
+            it must succeed on a Strength saving throw or be pushed 10 feet from
+            you in a straight line.
+          title: Stone Strike
+        - type: counter
+          counter:
+            id: 1405427
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  activation_type: 8
+- name: Storm Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d6[lightning]
+          overheal: null
+        - type: save
+          stat: con
+          fail:
+            - type: ieffect2
+              name: Storm Struck
+              duration: "1"
+              effects:
+                attack_advantage: "-1"
+                to_hit_bonus: null
+                damage_bonus: null
+                magical_damage: null
+                silvered_damage: null
+                resistances: null
+                immunities: null
+                vulnerabilities: null
+                ignored_resistances: null
+                ac_value: null
+                ac_bonus: null
+                max_hp_value: null
+                max_hp_bonus: null
+                save_bonus: null
+                save_adv: null
+                save_dis: null
+                check_bonus: null
+                check_adv: null
+                check_dis: null
+                dc_bonus: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: null
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: true
+          success: []
+        - type: text
+          text: The target takes an extra 1d6 lightning damage. If the target is a
+            creature, it must succeed on a Constitution saving throw, or it has
+            disadvantage on attack rolls until the start of your next turn.
+          title: Storm Strike
+        - type: counter
+          counter:
+            id: 1405428
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  activation_type: 8
+- name: Searing Ignition
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: save
+          stat: dex
+          fail:
+            - type: damage
+              damage: (1d8+{{proficiencyBonus}})[fire]
+              overheal: null
+            - type: ieffect2
+              name: Blinded
+              duration: "1"
+              effects:
+                attack_advantage: "-1"
+                to_hit_bonus: null
+                damage_bonus: null
+                magical_damage: null
+                silvered_damage: null
+                resistances: null
+                immunities: null
+                vulnerabilities: null
+                ignored_resistances: null
+                ac_value: null
+                ac_bonus: null
+                max_hp_value: null
+                max_hp_bonus: null
+                save_bonus: null
+                save_adv: null
+                save_dis: null
+                check_bonus: null
+                check_adv: null
+                check_dis: null
+                dc_bonus: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: null
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: true
+          success:
+            - type: damage
+              damage: (1d8+{{proficiencyBonus}})/2[fire]
+              overheal: null
+        - type: text
+          text: When you take the Attack action on your turn, you can replace a single
+            attack with a magical burst of flame. Each creature of your choice
+            in a 15-foot-radius sphere centered on you must make a Dexterity
+            saving throw (DC equals 8 + your proficiency bonus + the modifier of
+            the ability increased by this feat). On a failed save, a creature
+            takes fire damage equal to 1d8 + your proficiency bonus, and it has
+            the blinded condition until the start of your next turn. On a
+            successful save, the creature takes half as much damage only. You
+            can use your Searing Ignition a number of times equal to your
+            proficiency bonus (but no more than once per turn), and you regain
+            all expended uses when you finish a long rest.
+          title: Searing Ignition
+        - type: counter
+          counter:
+            id: 7448716
+            typeId: 222216831
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  verb: explodes with
+  activation_type: 8
+- name: Frigid Retaliation
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: save
+          stat: con
+          fail:
+            - type: damage
+              damage: (1d8+{{proficiencyBonus}})[cold]
+              overheal: null
+            - type: ieffect2
+              name: Frozen in Place
+              duration: "2"
+              effects: null
+              attacks: []
+              buttons: []
+              end: true
+              conc: null
+              desc: null
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success:
+            - type: damage
+              damage: (1d8+{{proficiencyBonus}})/2[cold]
+              overheal: null
+        - type: text
+          text: Immediately after a creature you can see within 30 feet of you hits you
+            with an attack roll and deals damage, you can use your reaction to
+            retaliate with a conjured blast of ice. The creature must make a
+            Constitution saving throw (DC equals 8 + your proficiency bonus +
+            the modifier of the ability increased by this feat). On a failed
+            save, the creature takes cold damage equal to 1d8 + your proficiency
+            bonus, and its speed is reduced to 0 until the end of its next turn.
+            You can use this reaction a number of times equal to your
+            proficiency bonus, and you regain all expended uses when you finish
+            a long rest.
+          title: Frigid Retaliation
+        - type: counter
+          counter:
+            id: 7448790
+            typeId: 222216831
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  verb: defends themselves with
+  activation_type: 4
+- name: Cloudy Escape
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Cloudy Resistance
+          duration: "1"
+          effects:
+            attack_advantage: null
+            to_hit_bonus: null
+            damage_bonus: null
+            magical_damage: null
+            silvered_damage: null
+            resistances:
+              - "{{choice}}"
+            immunities: null
+            vulnerabilities: null
+            ignored_resistances: null
+            ac_value: null
+            ac_bonus: null
+            max_hp_value: null
+            max_hp_bonus: null
+            save_bonus: null
+            save_adv: null
+            save_dis: null
+            check_bonus: null
+            check_adv: null
+            check_dis: null
+            dc_bonus: null
+          attacks: []
+          buttons: []
+          end: null
+          conc: null
+          desc: null
+          stacking: null
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: true
+        - type: text
+          text: When a creature you can see hits you with an attack roll, you can use your
+            reaction to give yourself resistance to that attack's damage. You
+            then teleport to an unoccupied space that you can see within 30 feet
+            of yourself. You can use this reaction a number of times equal to
+            your proficiency bonus, and you regain all expended uses when you
+            finish a long rest
+          title: Cloudy Escape
+        - type: counter
+          counter:
+            id: 7508773
+            typeId: 222216831
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  verb: escapes danger using
+  activation_type: 4
+- name: Stone Throw
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d10[force]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: ieffect2
+                  name: Knocked Prone
+                  duration: null
+                  effects: null
+                  attacks: []
+                  buttons:
+                    - label: Stand Up
+                      automation:
+                        - type: remove_ieffect
+                      verb: stands up
+                      style: "1"
+                      defaultDC: null
+                      defaultAttackBonus: null
+                      defaultCastingMod: null
+                  end: null
+                  conc: null
+                  desc: null
+                  stacking: null
+                  save_as: null
+                  parent: null
+                  target_self: null
+                  tick_on_caster: null
+              success: []
+          miss: []
+        - type: text
+          text: As a bonus action, you can take a rock and make a magical attack with it.
+            The attack is a ranged spell attack with a range of 60 feet that
+            uses the ability score you increased with this feat as the
+            spellcasting ability. On a hit, the rock deals 1d10 force damage,
+            and the target must succeed on a Strength saving throw (DC equals 8
+            + your proficiency bonus + the spellcasting ability modifier) or
+            have the prone condition. You can use this bonus action a number of
+            times equal to your proficiency bonus, and you regain all expended
+            uses when you finish a long rest.
+          title: Stone Throw
+        - type: counter
+          counter:
+            id: 7448835
+            typeId: 222216831
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  verb: performs
+  activation_type: 3
+- name: Maelstorm Aura
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Maelstorm Aura
+          duration: "2"
+          effects:
+            attack_advantage: null
+            to_hit_bonus: null
+            damage_bonus: null
+            magical_damage: null
+            silvered_damage: null
+            resistances:
+              - lightning
+              - thunder
+            immunities: null
+            vulnerabilities: null
+            ignored_resistances: null
+            ac_value: null
+            ac_bonus: null
+            max_hp_value: null
+            max_hp_bonus: null
+            save_bonus: null
+            save_adv: null
+            save_dis: null
+            check_bonus: null
+            check_adv: null
+            check_dis: null
+            dc_bonus: null
+          attacks:
+            - attack:
+                name: Wrath of Maelstorm
+                automation:
+                  - type: target
+                    target: all
+                    effects:
+                      - type: save
+                        stat: str
+                        fail:
+                          - type: ieffect2
+                            name: Speed Halved
+                            duration: "2"
+                            effects: null
+                            attacks: []
+                            buttons: []
+                            end: null
+                            conc: null
+                            desc: "{{target.name}} has their speed reduced in half by {{caster.name}}'s
+                              Maelstorm Aura."
+                            stacking: null
+                            save_as: null
+                            parent: null
+                            target_self: null
+                            tick_on_caster: null
+                        success: []
+                _v: 2
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          buttons: []
+          end: null
+          conc: null
+          desc: null
+          stacking: null
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: true
+        - type: text
+          text: As a bonus action, you surround yourself with an aura of magical wind and
+            lightning that extends 10 feet from you in every direction but not
+            through total cover. The aura lasts until the start of your next
+            turn or until you are incapacitated. While the aura is active, you
+            have resistance to lightning and thunder damage. In addition, attack
+            rolls against you have disadvantage, and whenever another creature
+            starts its turn within the aura, you can force the creature to make
+            a Strength saving throw (DC equals 8 + your proficiency bonus + the
+            modifier of the ability increased by this feat). On a failed save,
+            the creature's speed is halved until the start of its next turn. You
+            can use this bonus action a number of times equal to your
+            proficiency bonus, and you regain all expended uses when you finish
+            a long rest.
+          title: Maelstorm Aura
+        - type: counter
+          counter:
+            id: 7448846
+            typeId: 222216831
+          amount: ""
+          allowOverflow: null
+          errorBehaviour: null
+  _v: 2
+  activation_type: 3
+- name: Fire Strike
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: damage
+          damage: 1d10[fire]
+          overheal: false
+        - type: counter
+          counter:
+            id: 1405424
+            typeId: 1088085227
+          amount: "1"
+          allowOverflow: null
+          errorBehaviour: null
+        - type: text
+          text: The target takes an extra 1d10 fire damage.
+          title: Fire Strike
+  _v: 2
+  activation_type: 8
+- name: Bite - False Hydra
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d10 + 3 [piercing]
+              overheal: null
+            - type: ieffect2
+              name: Grappled
+              duration: null
+              effects: null
+              attacks: []
+              buttons:
+                - label: Escape Grapple
+                  automation:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: check
+                          ability:
+                            - athletics
+                            - acrobatics
+                          contestAbility: athletics
+                          contestTie: success
+                  verb: null
+                  style: "1"
+                  defaultDC: null
+                  defaultAttackBonus: null
+                  defaultCastingMod: null
+              end: null
+              conc: null
+              desc: null
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          miss: []
+          attackBonus: "6"
+        - type: text
+          text: "Melee Weapon Attack: +6 to hit, reach 30 ft., one creature. Hit: 8 (1d10
+            + 3) piercing damage and the target is grappled."
+          title: Effect
+  _v: 2
+- name: Thrill of the Hunt
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: condition
+          condition: level=<10
+          onTrue:
+            - type: damage
+              damage: 3d6[necrotic]
+              overheal: null
+          onFalse:
+            - type: damage
+              damage: 5d6[necrotic]
+              overheal: null
+          errorBehaviour: "false"
+    - type: text
+      text: >-
+        At 6th level, you gain the ability to feast on the vitality of your foes
+        while you are in your Form of the Beast. Once per turn, when you hit a
+        creature with your bite attack, you can cause the attack to deal an
+        extra 3d6 points of necrotic damage. You regain a number of hit points
+        equal to half the total damage dealt with this attack.
+
+
+        Once you use this feature, you can’t use it again until you score a critical hit with a bite or claw attack or until you finish a short or long rest.
+
+
+        At 10th level, the extra necrotic damage provided by this feature increases to 5d6.
+
+
+        -# ***To heal the total damage dealt of the bite, run the (Heal) action and add*** `-d` ***with the overall damage.***
+      title: Effect
+  _v: 2
+  proper: true
+  verb: wounds deeper with
+- name: Thrill of the Hunt (Heal)
+  automation:
+    - type: roll
+      dice: "0"
+      name: damage
+      hidden: false
+    - type: target
+      target: self
+      effects:
+        - type: damage
+          damage: -({damage}/2)
+          overheal: null
+    - type: text
+      text: >-
+        You regain a number of hit points equal to half the total damage dealt
+        with this attack.
+
+
+        Once you use this feature, you can’t use it again until you score a critical hit with a bite or claw attack or until you finish a short or long rest.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: invigorations with the
+- name: Abyssal Roar
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Abyssal Roar Used
+          duration: null
+          effects: null
+          attacks: []
+          buttons:
+            - label: Recharge Abyssal Roar
+              automation:
+                - type: roll
+                  dice: 1d6
+                  name: recharge
+                  hidden: false
+                  cantripScale: false
+                - type: condition
+                  condition: int(recharge) >= 5
+                  onTrue:
+                    - type: remove_ieffect
+                    - type: text
+                      text: "{{caster.name}} recharges their Abyssal Roar!"
+                      title: Effect
+                  onFalse:
+                    - type: text
+                      text: "{{caster.name}} doesn't recharge their Abyssal Roar!"
+                      title: Effect
+                  errorBehaviour: "false"
+              verb: attempts to recharge their Abyssal Roar
+              style: "3"
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          end: null
+          conc: null
+          desc: null
+          stacking: true
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: wis
+          fail:
+            - type: ieffect2
+              name: Frightened
+              duration: "10"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The creature is overwhelmed by the Abyssal Roar and is frightened for 1
+                minute. A frightened creature can repeat the saving throw at the
+                end of each of its turns, ending the effect on a success.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+            - type: ieffect2
+              name: Deafened
+              duration: "3"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The creature is deafened for 3 rounds by the overwhelming sound.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success: []
+          dc: "20"
+  _v: 2
+  proper: true
+  verb: roars
+- name: Bite
+  automation:
+    - type: roll
+      dice: 8d10+10 [piercing]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: "{damage}"
+          overheal: null
+        - type: save
+          stat: str
+          fail:
+            - type: ieffect2
+              name: Grappled
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is grappled (escape DC 24) if Large or smaller.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+            - type: ieffect2
+              name: Restrained
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is restrained until the grapple ends.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success: []
+          dc: "24"
+    - type: text
+      text: The Livyatan bites the target with massive jaws, dealing 8d10+10 piercing
+        damage. If the target is Large or smaller, it must make a DC 24 Strength
+        saving throw or become grappled (escape DC 24) and restrained until the
+        grapple ends.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: bites
+- name: Tentacle
+  automation:
+    - type: roll
+      dice: 4d12+10 [bludgeoning]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: "{damage}"
+          overheal: null
+        - type: save
+          stat: str
+          fail:
+            - type: ieffect2
+              name: Grappled
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is grappled (escape DC 22) if Huge or smaller.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+            - type: ieffect2
+              name: Restrained
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is restrained until the grapple ends.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success: []
+          dc: "22"
+    - type: text
+      text: The Livyatan lashes out with its massive tentacle. Each target within
+        reach must make a DC 22 Strength saving throw or take 4d12+10
+        bludgeoning damage and become grappled (escape DC 22). While grappled,
+        the target is also restrained until the grapple ends.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: lashes out with their
+- name: Fury of the Earthshaker
+  automation:
+    - type: attack
+      hit:
+        - type: target
+          target: all
+          effects:
+            - type: roll
+              dice: 1d6
+              name: thunder_damage
+              hidden: null
+            - type: damage
+              damage: "{thunder_damage}"
+              overheal: null
+      miss: []
+    - type: text
+      text: When you reduce a creature to 0 HP while raging, you can push creatures
+        within 5 feet 10 feet away. Each must succeed on a Constitution saving
+        throw (DC = 8 + proficiency + STR mod) or be pushed. This effect must be
+        applied manually.
+      title: Effect
+  _v: 2
+- name: Vine Whip
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+3 [slashing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Sprigatito lashes out with a vine, dealing 2d6+3 slashing damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: "lashes out with a "
+- name: Thorn Lash
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d8+4 [piercing]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: text
+                  text: The target is pulled 10 feet closer to Floragato.
+                  title: Effect
+              success: []
+              dc: "14"
+          miss: []
+    - type: text
+      text: Floragato lashes a thorn-tipped whip at a creature. On a hit, the target
+        takes 3d8+4 piercing damage and must succeed on a DC 14 Strength saving
+        throw or be pulled 10 feet closer.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: lashes a thorn whip
+- name: Trick Bloom
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 4d10+5 [force]
+              overheal: null
+          miss: []
+    - type: text
+      text: Meowscarada conjures an illusory bloom that bursts in psychic force. The
+        target takes 4d10+5 force damage on a hit.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: conjures a dazzling illusion
+- name: Ember Bite
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+1 [fire]
+              overheal: null
+          miss: []
+    - type: text
+      text: Fuecoco bites its target, dealing 2d6+1 fire damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: bites
+- name: Scorching Tail Slam
+  automation:
+    - type: roll
+      dice: 4d10+6 [bludgeoning]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: str
+          fail:
+            - type: damage
+              damage: "{damage} + 2d6 [fire]"
+              overheal: null
+            - type: ieffect2
+              name: Prone
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is knocked prone by the force of the slam and scorched by fire.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success:
+            - type: damage
+              damage: "{damage}/2 + 2d6 [fire]"
+              overheal: null
+          dc: "15"
+    - type: text
+      text: Crocalor slams its tail in a fiery arc. Each creature within range must
+        make a DC 15 Strength saving throw, taking 4d10+6 bludgeoning damage
+        plus 2d6 fire damage on a failed save and being knocked prone. On a
+        successful save, the target takes half damage and remains standing.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slams its fiery tail
+- name: Infernal Flame Slam
+  automation:
+    - type: roll
+      dice: 5d12+10 [bludgeoning]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: str
+          fail:
+            - type: damage
+              damage: "{damage} + 3d8 [fire]"
+              overheal: null
+            - type: ieffect2
+              name: Prone
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is knocked prone by the force of the slam and scorched by
+                infernal flames.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success:
+            - type: damage
+              damage: "{damage}/2 + 3d8 [fire]"
+              overheal: null
+          dc: "18"
+    - type: text
+      text: Skeledirge slams its massive, flaming tail in a devastating infernal arc.
+        Each creature within range must make a DC 18 Strength saving throw,
+        taking 5d12+10 bludgeoning damage plus 3d8 fire damage on a failed save
+        and being knocked prone. On a successful save, the target takes half
+        damage and remains standing.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slams its massive flaming tail
+- name: Aqua Kick
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+3 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: target
+                  target: 1
+                  effects: []
+              success: []
+              dc: "13"
+          miss: []
+    - type: text
+      text: Quaxly delivers a splashy kick. On hit, the target takes 2d6+3 bludgeoning
+        damage and must succeed on a DC 13 Strength saving throw or be pushed 5
+        feet back.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: kicks with a splash of water
+- name: Jet Strike
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d10+4 [bludgeoning]
+              overheal: null
+          miss: []
+    - type: text
+      text: Quaxwell surges forward with a water-powered strike, dealing 3d10+4
+        bludgeoning damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: surges forward with water-powered force
+- name: Aqua Samba
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: dex
+          fail:
+            - type: damage
+              damage: 5d8+5 [bludgeoning]
+              overheal: null
+            - type: ieffect2
+              name: Restrained
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: Ensnared by swirling water, the creature is restrained until the end of
+                its next turn.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success:
+            - type: damage
+              damage: 5d8+5/2 [bludgeoning]
+              overheal: null
+          dc: "16"
+    - type: text
+      text: Quaquaval unleashes a powerful swirling dance of water. Each creature in a
+        15-foot radius must make a DC 16 Dexterity saving throw, taking 5d8+5
+        bludgeoning damage and becoming restrained on a failed save, or half
+        damage on a successful one.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: unleashes a swirling aquatic dance
+- name: Tackle
+  automation:
+    - type: target
+      target: 1
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d10+2 [bludgeoning]
+              overheal: null
+          miss: []
+    - type: text
+      text: Lechonk charges into a creature with its full weight, dealing 1d10+2
+        bludgeoning damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: charges into its target
+- name: Tail Slam
+  automation:
+    - type: roll
+      dice: 1d12+10 [bludgeoning]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: str
+          fail:
+            - type: damage
+              damage: "{damage}"
+              overheal: null
+            - type: ieffect2
+              name: Prone
+              duration: "1"
+              effects: null
+              attacks: []
+              buttons: []
+              end: null
+              conc: null
+              desc: The target is knocked prone by the force of the slam.
+              stacking: null
+              save_as: null
+              parent: null
+              target_self: null
+              tick_on_caster: null
+          success:
+            - type: damage
+              damage: "{damage}/2"
+              overheal: null
+          dc: "15"
+    - type: text
+      text: Oinkologne slams its massive tail in a wide arc. Each creature in range
+        must make a DC 15 Strength saving throw, taking 5d12+10 bludgeoning
+        damage on a failed save and being knocked prone. On a success, the
+        target takes half damage and remains standing.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slams its massive tail
+- name: Snort (Recharge 5–6)
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Snort Used
+          duration: "999"
+          effects:
+            attack_advantage: null
+            to_hit_bonus: null
+            damage_bonus: null
+            magical_damage: null
+            silvered_damage: null
+            resistances: null
+            immunities: null
+            vulnerabilities: null
+            ignored_resistances: null
+            ac_value: null
+            ac_bonus: null
+            max_hp_value: null
+            max_hp_bonus: null
+            save_bonus: null
+            save_adv: null
+            save_dis: null
+            check_bonus: null
+            check_adv: null
+            check_dis: null
+            dc_bonus: null
+          attacks: []
+          buttons:
+            - label: Recharge Snort
+              automation:
+                - type: roll
+                  dice: 1d6
+                  name: recharge
+                  hidden: null
+                - type: condition
+                  condition: recharge >= 5
+                  onTrue:
+                    - type: remove_ieffect
+                    - type: text
+                      text: "{{caster.name}} recharges their Snort!"
+                      title: Effect
+                  onFalse:
+                    - type: text
+                      text: "{{caster.name}} fails to recharge their Snort!"
+                      title: Effect
+                  errorBehaviour: null
+              verb: snorts loudly to recharge its power
+              style: "3"
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          end: null
+          conc: null
+          desc: null
+          stacking: null
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: wis
+          fail:
+            - type: ieffect
+              name: Frightened
+              duration: "1"
+              effects: ""
+              end: null
+              conc: null
+              desc: The target is frightened until the end of its next turn by the booming
+                snort.
+              stacking: null
+              save_as: null
+              parent: null
+          success: []
+          dc: "13"
+    - type: text
+      text: Oinkologne emits a thunderous snort in a 15-foot cone. Each creature in
+        that area must make a DC 13 Wisdom saving throw or become frightened
+        until the end of its next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: unleashes a thunderous snort
+- name: Silken Trap
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d4+2 [piercing]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: ieffect
+                  name: Restrained
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is wrapped in sticky webbing. It can use an action to make a DC
+                    12 Strength check to break free.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "12"
+          miss: []
+    - type: text
+      text: Tarountula lashes out with webbing and sharp limbs. On a hit, the target
+        takes 1d4+2 piercing damage and must succeed on a DC 12 Strength saving
+        throw or become restrained for 1 minute. The target can repeat the save
+        at the end of each of its turns or use an action to break free.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: strikes with sticky webbing
+- name: Web Shot
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d8+4 [piercing]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: ieffect
+                  name: Restrained
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is ensnared by sticky webbing. It can use an action to attempt
+                    a DC 15 Strength check to escape.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "15"
+          miss: []
+    - type: text
+      text: Spidops shoots sticky webbing at a target. On a hit, the target takes
+        3d8+4 piercing damage and must succeed on a DC 15 Strength saving throw
+        or become restrained for 1 minute. The restrained target can repeat the
+        saving throw at the end of each of its turns, or use an action to free
+        itself.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: shoots sticky webbing
+- name: Quick Jab
+  automation:
+    - type: target
+      target: all
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d6+3 [piercing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Nymble darts forward and jabs with surprising speed, dealing 1d6+3
+        piercing damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: jabs forward quickly
+- name: Axe Kick
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d10+5 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: ieffect
+                  name: Stunned
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is briefly stunned by the impact of the Axe Kick.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "14"
+          miss: []
+    - type: text
+      text: Lokix leaps high and brings down a crushing axe kick. On a hit, the target
+        takes 2d10+5 bludgeoning damage and must succeed on a DC 14 Constitution
+        saving throw or be stunned until the end of Lokix's next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: delivers a stunning axe kick
+- name: Thunder Fist
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+4 [bludgeoning]
+              overheal: null
+            - type: damage
+              damage: 1d6 [lightning]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: ieffect
+                  name: Stunned
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is stunned by a jolt of electric energy.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "15"
+          miss: []
+    - type: text
+      text: Pawmot punches with electrified fists. On a hit, the target takes 2d8+4
+        bludgeoning and 1d6 lightning damage and must succeed on a DC 15
+        Constitution saving throw or be stunned until the end of its next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: delivers an electrified punch
+- name: Thunder Palm
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d10+3 [lightning]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: ieffect
+                  name: Stunned
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is briefly stunned by the shocking impact.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "13"
+          miss: []
+    - type: text
+      text: Pawmo strikes with an electrified palm. On a hit, the target takes 2d10+3
+        lightning damage and must succeed on a DC 13 Constitution saving throw
+        or be stunned until the end of its next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: delivers a shocking palm strike
+- name: Static Zap
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d8+2 [lightning]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: ieffect
+                  name: Paralyzed
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is briefly paralyzed by the jolt of electricity.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "11"
+          miss: []
+    - type: text
+      text: Pawmi releases a quick jolt of electricity. On a hit, the target takes
+        1d8+2 lightning damage and must succeed on a DC 11 Constitution saving
+        throw or be paralyzed until the end of its next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: zaps the target with a spark of electricity
+- name: Double Nibble
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d4+3 [piercing]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: ieffect
+                  name: Disadvantage on Next Save
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target has disadvantage on its next saving throw.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "12"
+          miss: []
+    - type: text
+      text: The Tandemaus pair rush forward with synchronized chomps. On a hit, the
+        target takes 2d4+3 piercing damage and must succeed on a DC 12
+        Constitution saving throw or have disadvantage on its next saving throw.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: bites in tandem
+- name: Population Pummel
+  automation:
+    - type: roll
+      dice: 4d6+4 [bludgeoning]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: "{damage}"
+          overheal: null
+        - type: save
+          stat: str
+          fail:
+            - type: ieffect
+              name: Restrained
+              duration: "1"
+              effects: ""
+              end: null
+              conc: null
+              desc: The target is buried under a flurry of squeaking punches and tiny stomps.
+              stacking: null
+              save_as: null
+              parent: null
+          success: []
+          dc: "14"
+    - type: text
+      text: The Maushold swarms a target with flailing fists, squeaky slaps, and toy
+        projectiles. Each target takes 4d6+4 bludgeoning damage and must succeed
+        on a DC 14 Strength saving throw or be restrained until the end of their
+        next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: swarms its foes with a flurry of attacks
+- name: Doughy Slap
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 1d6+2 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: ieffect
+                  name: Restrained
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target’s weapon or arm is stuck in Fidough’s yeasty body.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "12"
+          miss: []
+    - type: text
+      text: Fidough bops a creature with its soft, yeasty paws. On a hit, the target
+        takes 1d6+2 bludgeoning damage and must succeed on a DC 12 Strength
+        saving throw or be restrained until the end of its next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slaps with soft doughy paws
+- name: Doughy Bite
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+3 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: ieffect
+                  name: Restrained
+                  duration: "1"
+                  effects: ""
+                  end: null
+                  conc: null
+                  desc: The target is stuck in Dachsbun’s gummy dough.
+                  stacking: null
+                  save_as: null
+                  parent: null
+              success: []
+              dc: "13"
+          miss: []
+    - type: text
+      text: Dachsbun chomps with a surprisingly powerful doughy bite. On a hit, the
+        target takes 2d8+3 bludgeoning damage and must succeed on a DC 13
+        Strength saving throw or be restrained for 1 round.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: bites with gummy dough
+- name: Verdant Slash
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 4d8+4 [slashing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Arboliva slashes with razor-sharp leaves, dealing 4d8+4 slashing damage on
+        a hit.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slashes with razor-sharp leaves
+- name: Binding Vines
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: str
+          fail:
+            - type: damage
+              damage: 3d8 [bludgeoning]
+              overheal: null
+            - type: condition
+              condition: Restrained
+              onTrue: []
+              onFalse: []
+              errorBehaviour: null
+          success: []
+          dc: "16"
+    - type: text
+      text: Arboliva summons thick vines to entangle foes. Each creature in a 15-foot
+        cone must succeed on a DC 16 Strength saving throw or take 3d8
+        bludgeoning damage and become restrained for 1 minute.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: summons thick vines
+- name: Razor Leaf
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d6+3 [slashing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Dolliv hurls sharp leaves at a target, dealing 3d6+3 slashing damage on a
+        hit.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: hurls sharp leaves
+- name: Leaf Slash
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+2 [slashing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Smoliv slashes at a creature with sharp leaves, dealing 2d6+2 slashing
+        damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slashes with sharp leaves
+- name: Beak Peck
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+2 [piercing]
+              overheal: null
+          miss: []
+    - type: text
+      text: Squawkabilly pecks a target with its sharp beak, dealing 2d8+2 piercing
+        damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: pecks
+- name: Wing Buffet
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d6+3 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: condition
+                  condition: Prone
+                  onTrue: []
+                  onFalse: []
+                  errorBehaviour: null
+              success: []
+              dc: "14"
+          miss: []
+    - type: text
+      text: Squawkabilly beats its wings powerfully in a 10-foot cone, dealing 3d6+3
+        bludgeoning damage. Creatures that fail a DC 14 Strength saving throw
+        are knocked prone.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: beats its wings powerfully
+- name: Rock Throw
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+2 [bludgeoning]
+              overheal: null
+          miss: []
+    - type: text
+      text: Nacli hurls a chunk of salt-encrusted rock, dealing 2d8+2 bludgeoning
+        damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: hurls a chunk of rock
+- name: Salt Burst
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: con
+          fail:
+            - type: damage
+              damage: 2d6 [acid]
+              overheal: null
+            - type: condition
+              condition: Poisoned
+              onTrue: []
+              onFalse: []
+              errorBehaviour: null
+          success:
+            - type: damage
+              damage: 2d6 [acid]
+              overheal: null
+          dc: "13"
+    - type: text
+      text: Nacli releases a burst of corrosive salt in a 10-foot radius. Each
+        creature must make a DC 13 Constitution saving throw, taking 2d6 acid
+        damage and becoming poisoned for 1 minute on a failed save, or half as
+        much damage on a successful one.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: releases a burst of corrosive salt
+- name: Rock Slam
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 3d10+3 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: condition
+                  condition: Prone
+                  onTrue: []
+                  onFalse: []
+                  errorBehaviour: null
+              success: []
+              dc: "14"
+          miss: []
+    - type: text
+      text: Naclstack slams a heavy chunk of rock into a foe. On a hit, the target
+        takes 3d10+3 bludgeoning damage and must succeed on a DC 14 Strength
+        saving throw or be knocked prone.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slams with a blocky arm
+- name: Salt Spray
+  automation:
+    - type: roll
+      dice: 3d6 [acid]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: con
+          fail:
+            - type: damage
+              damage: "{damage}"
+              overheal: null
+            - type: condition
+              condition: Poisoned
+              onTrue: []
+              onFalse: []
+              errorBehaviour: null
+          success:
+            - type: damage
+              damage: "{damage}/2"
+              overheal: null
+          dc: "14"
+    - type: text
+      text: Naclstack sprays a corrosive burst of salt in a 15-foot cone. Creatures in
+        the area must make a DC 14 Constitution saving throw, taking 3d6 acid
+        damage and becoming poisoned for 1 minute on a failed save. On success,
+        they take half damage and are not poisoned.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: sprays a corrosive salt burst
+- name: Crystal Hammer
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 4d10+5 [bludgeoning]
+              overheal: null
+            - type: save
+              stat: con
+              fail:
+                - type: condition
+                  condition: Stunned
+                  onTrue: []
+                  onFalse: []
+                  errorBehaviour: null
+              success: []
+              dc: "16"
+          miss: []
+    - type: text
+      text: Garganacl brings down a massive crystalline fist. On a hit, the target
+        takes 4d10+5 bludgeoning damage and must succeed on a DC 16 Constitution
+        saving throw or be stunned until the end of their next turn.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: crushes with a crystalline hammer
+- name: Salt Cure Beam
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Salt Cure Beam Used
+          duration: null
+          effects: null
+          attacks: []
+          buttons:
+            - label: Recharge Salt Cure Beam
+              automation:
+                - type: roll
+                  dice: 1d6
+                  name: recharge
+                  hidden: false
+                  cantripScale: false
+                - type: condition
+                  condition: int(recharge) >= 5
+                  onTrue:
+                    - type: remove_ieffect
+                    - type: text
+                      text: "{{caster.name}} recharges their Salt Cure Beam!"
+                      title: Effect
+                  onFalse:
+                    - type: text
+                      text: "{{caster.name}} doesn't recharge their Salt Cure Beam!"
+                      title: Effect
+                  errorBehaviour: "false"
+              verb: attempts to recharge their Salt Cure Beam
+              style: "3"
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          end: null
+          conc: null
+          desc: null
+          stacking: true
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: roll
+      dice: 6d8
+      name: healing
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: -{healing}
+          overheal: null
+    - type: text
+      text: Garganacl fires a radiant beam of purifying salt in a 30-foot line that is
+        5 feet wide. Each creature in that line regains 6d8 hit points. Recharge
+        5–6.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: emits a radiant beam of healing salt
+- name: Flame Burst
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Flame Burst Used
+          duration: null
+          effects: null
+          attacks: []
+          buttons:
+            - label: Recharge Flame Burst
+              automation:
+                - type: roll
+                  dice: 1d6
+                  name: recharge
+                  hidden: false
+                  cantripScale: false
+                - type: condition
+                  condition: int(recharge) >= 5
+                  onTrue:
+                    - type: remove_ieffect
+                    - type: text
+                      text: "{{caster.name}} recharges their Flame Burst!"
+                      title: Effect
+                  onFalse:
+                    - type: text
+                      text: "{{caster.name}} doesn't recharge their Flame Burst!"
+                      title: Effect
+                  errorBehaviour: "false"
+              verb: attempts to recharge their Flame Burst
+              style: "3"
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          end: null
+          conc: null
+          desc: null
+          stacking: true
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: roll
+      dice: 3d6 [fire]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: dex
+          fail:
+            - type: damage
+              damage: "{damage}"
+              overheal: null
+          success:
+            - type: damage
+              damage: "{damage}/2"
+              overheal: null
+          dc: "13"
+    - type: text
+      text: Charcadet releases a burst of flames in a 15-foot radius. Creatures in the
+        area must make a DC 13 Dexterity saving throw, taking full fire damage
+        on a failed save, or half damage on success.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: releases a burst of flame
+- name: Ember Slash
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+3 [slashing]
+              overheal: null
+            - type: damage
+              damage: 1d4 [fire]
+              overheal: null
+          miss:
+            - type: text
+              text: Charcadet's fiery slash misses the target.
+              title: Effect
+    - type: text
+      text: Charcadet slashes with a burning blade, dealing slashing and fire damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: slashes with fiery claws
+- name: Flaming Greatsword
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+3 [slashing]
+              overheal: null
+            - type: damage
+              damage: 2d6 [fire]
+              overheal: null
+          miss: []
+    - type: text
+      text: Armarouge strikes with a flaming greatsword, dealing slashing and fire
+        damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: strikes with a flaming greatsword
+- name: Fireburst
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: ieffect2
+          name: Fireburst Used
+          duration: null
+          effects: null
+          attacks: []
+          buttons:
+            - label: Recharge Fireburst
+              automation:
+                - type: roll
+                  dice: 1d6
+                  name: recharge
+                  hidden: false
+                  cantripScale: false
+                - type: condition
+                  condition: int(recharge) >= 5
+                  onTrue:
+                    - type: remove_ieffect
+                    - type: text
+                      text: "{{caster.name}} recharges their Fireburst!"
+                      title: Effect
+                  onFalse:
+                    - type: text
+                      text: "{{caster.name}} doesn't recharge their Fireburst!"
+                      title: Effect
+                  errorBehaviour: "false"
+              verb: attempts to recharge their Fireburst
+              style: "3"
+              defaultDC: null
+              defaultAttackBonus: null
+              defaultCastingMod: null
+          end: null
+          conc: null
+          desc: null
+          stacking: true
+          save_as: null
+          parent: null
+          target_self: null
+          tick_on_caster: null
+    - type: roll
+      dice: 6d6 [fire]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: dex
+          fail:
+            - type: damage
+              damage: "{damage}"
+              overheal: null
+          success:
+            - type: damage
+              damage: "{damage}/2"
+              overheal: null
+          dc: "14"
+    - type: text
+      text: Armarouge unleashes a fiery explosion in a 20-foot radius. Each creature
+        must make a DC 14 Dexterity saving throw, taking full damage on a failed
+        save, or half on a success.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: unleashes a fiery explosion
+- name: Frostblade Strike
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d8+3 [slashing]
+              overheal: null
+            - type: damage
+              damage: 2d6 [cold]
+              overheal: null
+          miss: []
+    - type: text
+      text: Ceruledge strikes with a frost-imbued blade, dealing slashing and cold
+        damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: strikes with a frostblade
+- name: Iceburst
+  automation:
+    - type: roll
+      dice: 6d6 [cold]
+      name: damage
+      hidden: null
+    - type: target
+      target: each
+      effects:
+        - type: save
+          stat: dex
+          fail:
+            - type: damage
+              damage: "{damage}"
+              overheal: null
+            - type: ieffect
+              name: Slowed
+              duration: "1"
+              effects: ""
+              end: null
+              conc: null
+              desc: The target’s movement speed is halved until the start of Ceruledge's next
+                turn.
+              stacking: null
+              save_as: null
+              parent: null
+          success:
+            - type: damage
+              damage: "{damage}/2"
+              overheal: null
+          dc: "14"
+    - type: text
+      text: Ceruledge releases a burst of freezing energy in a 20-foot radius. Each
+        creature must make a DC 14 Dexterity saving throw, taking full cold
+        damage and becoming slowed on a failed save, or half damage on a
+        success.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: releases a freezing burst
+- name: Volt Strike
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: attack
+          hit:
+            - type: damage
+              damage: 2d6+3 [lightning]
+              overheal: null
+            - type: save
+              stat: str
+              fail:
+                - type: condition
+                  condition: Paralyzed
+                  onTrue: []
+                  onFalse: []
+                  errorBehaviour: null
+              success: []
+              dc: "12"
+          miss: []
+    - type: text
+      text: Tadbulb strikes its target with a sudden surge of electricity, dealing
+        2d6+3 lightning damage. The target must succeed on a DC 12 Strength
+        saving throw or be paralyzed for 1 round.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: strikes with lightning
