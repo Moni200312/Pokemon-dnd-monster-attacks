@@ -13,9 +13,9 @@ type: save
     stat: str
     dc: "14"
     fail:
-type: move
-      direction: pull
-      distance: 10
+type: text
+      text: "The target is pulled 10 feet closer to Floragato."
+  success: []
 miss: []
 type: text
 text: >-
