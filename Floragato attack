@@ -1,0 +1,25 @@
+name: Thorn Lash
+automation:
+  
+type: target
+  target: all
+  effects:
+type: attack
+    attack: 1d20+6
+    hit:
+type: damage
+      damage: 3d8+4 [piercing]
+type: save
+    stat: str
+    dc: "14"
+    fail:
+type: move
+      direction: pull
+      distance: 10
+miss: []
+type: text
+text: >-
+  Floragato lashes a thorn-tipped whip at a creature. On a hit, the target takes 3d8+4 piercing damage and must succeed on a DC 14 Strength saving throw or be pulled 10 feet closer.
+_v: 2
+verb: lashes a thorn whip
+proper: true
